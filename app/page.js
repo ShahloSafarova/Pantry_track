@@ -42,10 +42,10 @@ const itemCardStyle = {
   bgcolor: '#FFFFFF', // Card background
   padding: 2,
   border: '1px solid #E0E0E0', // Card border
-  width: '96%'
+  maxWidth: '100%', // Prevents cards from exceeding container width
 }
 
-const backgroundImage = 'url("https://wallpaper-house.com/data/out/10/wallpaper2you_373651.jpg")'
+const backgroundColor = '#AFE1AF' // App background color
 
 export default function Home() {
   const [inventory, setInventory] = useState([])
@@ -131,12 +131,7 @@ export default function Home() {
       flexDirection={'column'}
       alignItems={'center'}
       gap={2}
-      sx={{
-        backgroundImage,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
+      bgcolor={backgroundColor} // App background color
     >
       {/* Add Item Modal */}
       <Modal
@@ -225,7 +220,7 @@ export default function Home() {
         sx={{ mb: 2, width: '800px' }}
       />
 
-      <Box border={'1px solid #333'}>
+      <Box border={'1px solid #333'} overflowX="auto">
         <Box
           width="800px"
           height="100px"
@@ -238,7 +233,7 @@ export default function Home() {
             Inventory Items
           </Typography>
         </Box>
-        <Stack width="800px" height="300px" spacing={2} overflow={'auto'}>
+        <Stack width="800px" height="300px" spacing={2} overflow="auto">
           {filteredInventory.map(({ name, quantity }) => (
             <Box
               key={name}
@@ -278,3 +273,4 @@ export default function Home() {
     </Box>
   )
 }
+
